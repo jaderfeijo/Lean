@@ -268,6 +268,7 @@ namespace QuantConnect.Lean.Engine
                 {
                     foreach (var security in timeSlice.SecurityChanges.AddedSecurities)
                     {
+                        Log.Trace($"{algorithm.Time} {security.Symbol} IsTradable = true");
                         security.IsTradable = true;
                         // uses TryAdd, so don't need to worry about duplicates here
                         algorithm.Securities.Add(security);
@@ -278,6 +279,7 @@ namespace QuantConnect.Lean.Engine
                     {
                         if (!activeSecurities.ContainsKey(security.Symbol))
                         {
+                            Log.Trace($"{algorithm.Time} {security.Symbol} IsTradable = false");
                             security.IsTradable = false;
                         }
                     }

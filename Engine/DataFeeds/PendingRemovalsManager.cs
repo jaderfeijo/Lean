@@ -71,6 +71,7 @@ namespace QuantConnect.Lean.Engine.DataFeeds
         {
             if (IsSafeToRemove(member))
             {
+                Logging.Log.Trace($"{member.Symbol} safe to remove");
                 return new List<RemovedMember> {new RemovedMember(universe, member)};
             }
 
